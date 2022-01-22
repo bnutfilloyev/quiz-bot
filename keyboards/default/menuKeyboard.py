@@ -1,9 +1,10 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from data.text import button_text
 
 menu = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text='Solve Test')
+            KeyboardButton(text=button_text['solve_test_text'])
         ]
     ],
     resize_keyboard=True,
