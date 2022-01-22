@@ -1,13 +1,11 @@
 from aiogram import types
 
+from data import text
+from keyboards.poll_keyboard import poll_keyboard
 from loader import dp, bot
 
 
 @dp.message_handler(commands=["add_quiz"])
 async def cmd_start(message: types.Message):
-    poll_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    poll_keyboard.add(types.KeyboardButton(text="Создать викторину",
-                                           request_poll=types.KeyboardButtonPollType(type=types.PollType.QUIZ)))
-    poll_keyboard.add(types.KeyboardButton(text="Отмена"))
-    await message.answer("Нажмите на кнопку ниже и создайте викторину! "
-                         "Внимание: в дальнейшем она будет публичной (неанонимной).", reply_markup=poll_keyboard)
+    await message.answer(text=text['create_quiz_hello'], reply_markup=poll_keyboard)
+
