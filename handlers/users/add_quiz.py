@@ -1,8 +1,8 @@
 from aiogram import types
 
-from data import text
+from data.text import text
 from keyboards.poll_keyboard import poll_keyboard
-from loader import dp, bot
+from loader import dp
 
 
 @dp.message_handler(commands=["add_quiz"])
