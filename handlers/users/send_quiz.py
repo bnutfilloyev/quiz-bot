@@ -10,8 +10,13 @@ from utils.db_api.mongo import quizzes_database
 
 @dp.message_handler(text=button_text['solve_test_text'])
 async def send_text(msg: types.Message):
-    skip = random.randint(0, int(quizzes_database.count_documents({})))
-    for i in quizzes_database.find().skip(skip).limit(6):
+    data = []
+    for i in quizzes_database.find():
+        data.append(i['quiz_id'])
+    for j in range(6):
+        quiz_id = random.choice(data)
+        data.remove(quiz_id)
+        i = quizzes_database.find_one({'quiz_id': quiz_id})
         await msg.answer_poll(
             question=i['question'],
             options=i['options'],
@@ -22,4 +27,3 @@ async def send_text(msg: types.Message):
         )
         await asyncio.sleep(5)
     await msg.answer(text['invite_link'])
-

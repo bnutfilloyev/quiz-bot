@@ -14,6 +14,7 @@ async def msg_with_poll(message: types.Message, state: FSMContext):
             return
 
         quizzes_database.insert_one({
+            'quiz_id': message.poll.id,
             'question': message.poll.question,
             'options': [o.text for o in message.poll.options],
             'correct_option_id': message.poll.correct_option_id,

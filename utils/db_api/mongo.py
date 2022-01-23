@@ -12,6 +12,4 @@ user_db = database['users']
 quizzes_database = database['quizes_database']
 
 if __name__ == "__main__":
-    for i in quizzes_database.find():
-        print(i['quiz_id'])
-
+    pass
