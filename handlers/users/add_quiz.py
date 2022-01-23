@@ -8,4 +8,3 @@ from loader import dp
 @dp.message_handler(commands=["add_quiz"])
 async def cmd_start(message: types.Message):
     await message.answer(text=text['create_quiz_hello'], reply_markup=poll_keyboard)
-

@@ -1,31 +1,22 @@
 from aiogram import types
+from aiogram.dispatcher import FSMContext
 
+from data.text import text
 from loader import dp
-from utils.Quiz import Quiz
-from utils.db_api.mongo import quizzes_database, quizzes_owners
+from utils.db_api.mongo import quizzes_database
 
 
-@dp.message_handler(content_types=["poll"])
-async def msg_with_poll(message: types.Message):
-    # # Если юзер раньше не присылал запросы, выделяем под него запись
-    # if not quizzes_database.get(str(message.from_user.id)):
-    #     quizzes_database[str(message.from_user.id)] = []
+@dp.message_handler(content_types=types.ContentTypes.POLL)
+async def msg_with_poll(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        if message.poll.type != "quiz":
+            await message.reply(text['check_quiz'])
+            return
 
-    # Если юзер решил вручную отправить не викторину, а опрос, откажем ему.
-    if message.poll.type != "quiz":
-        await message.reply("Извините, я принимаю только викторины (quiz)!")
-        return
+        quizzes_database.insert_one({
+            'question': message.poll.question,
+            'options': [o.text for o in message.poll.options],
+            'correct_option_id': message.poll.correct_option_id,
+        })
 
-    # Сохраняем себе викторину в память
-    quizzes_database.update_one({'telegram_id':str(message.from_user.id)}, {Quiz(
-        quiz_id=message.poll.id,
-        question=message.poll.question,
-        options=[o.text for o in message.poll.options],
-        correct_option_id=message.poll.correct_option_id,
-        owner_id=message.from_user.id)}
-    )
-    # Сохраняем информацию о её владельце для быстрого поиска в дальнейшем
-    quizzes_owners[message.poll.id] = str(message.from_user.id)
-
-    await message.reply(
-        f"Викторина сохранена. Общее число сохранённых викторин: {len(quizzes_database[str(message.from_user.id)])}")
+        await message.reply(text['count_quiz'].format(quizzes_database.count_documents({})))
