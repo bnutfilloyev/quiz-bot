@@ -8,6 +8,7 @@ text = {
     'invite_link': "If you want more testing, go to the site via the link.😊\n"
                    "👉Link: {}",
     'inline_text': "<b>Please select:</b>",
+    'over_text': "The tests are over. Try it after new tests are added."
 }
 
 button_text = {

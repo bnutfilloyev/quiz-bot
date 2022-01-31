@@ -7,6 +7,6 @@ from keyboards.inline.choose_subject import Subject, Curriculum, Level
 from loader import dp
 
 
-@dp.message_handler(CommandStart())
+@dp.message_handler(CommandStart(), state='*')
 async def bot_start(message: types.Message):
-    await message.answer(text=text['start_text'].format(message.from_user.full_name), reply_markup=Subject)
+    await message.answer(text=text['start_text'].format(message.from_user.full_name), reply_markup=menu)
