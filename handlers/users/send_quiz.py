@@ -31,7 +31,9 @@ async def send_text(call: CallbackQuery, state: FSMContext):
         for j in range(6):
             quiz_id = random.choice(quizes)
             quizes.remove(quiz_id)
-            i = quizzes_database.find_one({'quiz_id': quiz_id, 'subject': data['subject'], 'curriculum': data['curriculum'], 'level': data['level']})
+            i = quizzes_database.find_one(
+                {'quiz_id': quiz_id, 'subject': data['subject'], 'curriculum': data['curriculum'],
+                 'level': data['level']})
             if i == None:
                 await call.message.answer(text['over_text'])
                 break
