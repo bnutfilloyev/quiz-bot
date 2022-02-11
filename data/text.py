@@ -7,7 +7,7 @@ text = {
     'get_quiz_stoped': "The action has been cancelled. Type /add_quiz to start over.",
     'invite_link': "لمزيد من الامتحانات ، يمكن زيارة موقعنا على الرابط التالي:\n"
                    "👉https://darsradar.com/\n",
-    'inline_text': "<b>Please select:</b>",
+    'inline_text': "<b>اختر مما يلي</b>",
     'over_text': 'انتهت الاسئلة ، والنتيجة كالتالي:',
 
 }
