@@ -5,10 +5,10 @@ text = {
     'check_quiz': "Sorry, I won't take only quizzes!",
     'count_quiz': "The quiz is saved. General number of saved quizzes: {}",
     'get_quiz_stoped': "The action has been cancelled. Type /add_quiz to start over.",
-    'invite_link': "If you want more testing, go to the site via the link.😊\n"
-                   "👉Link: {}",
+    'invite_link': "لمزيد من الامتحانات ، يمكن زيارة موقعنا على الرابط التالي:\n"
+                   "👉https://darsradar.com/\n",
     'inline_text': "<b>Please select:</b>",
-    'over_text': "The tests are over. Try it after new tests are added."
+    'over_text': "والنتيجة كالتالي."
 }
 
 button_text = {
@@ -18,31 +18,31 @@ button_text = {
 }
 
 subject_text = {
-    'math': "Math",
-    'physics': "Physics",
-    'chemistry': "Chemistry",
-    'biology': "Biology",
-    'english': "English",
-    'arabic': "Arabic",
+    'math': "رياضيات",
+    'physics': "فيزياء",
+    'chemistry': "كيمياء",
+    'biology': "أحياء",
+    'english': "لغة انجليزية",
+    'arabic': "لغة عربية",
 }
 
 curriculum_text = {
-    'lebanon': 'Lebanon',
-    'palestine': 'Palestine',
-    'sudan': 'Sudan',
-    'yemen': 'Yemen',
+    'lebanon': 'لبنان',
+    'palestine': 'فلسطين',
+    'sudan': 'السودان',
+    'yemen': 'اليمن',
     'edexcel': 'Edexcel',
     'cambridge': 'Cambridge',
 }
 
 
 level_text = {
-    'level1': '7th Grade',
-    'level2': '8th Grade',
-    'level3': '9th Grade',
-    'level4': '10th Grade',
-    'level5': '11th Grade',
-    'level6': '12th Grade',
+    'level1': 'أول متوسط - سابع',
+    'level2': 'ثاني - متوسط - ثامن',
+    'level3': 'ثالث متوسط - تاسع',
+    'level4': 'أول ثانوي - عاشر',
+    'level5': 'ثاني ثانوي - حادي عشر',
+    'level6': 'ثالث ثانوي - ثاني عشر',
     'level7': 'IGCSE',
     'level8': 'A/AS',
 }

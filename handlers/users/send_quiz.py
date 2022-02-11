@@ -18,12 +18,16 @@ async def send_text(call: CallbackQuery, state: FSMContext):
         split_data = call.data.split(':')
         data[split_data[0]] = split_data[-1]
 
+        # User message delete
         await call.message.delete()
+
+        # quiz message sleep time
         sleep_time = 20
         quizes = []
         for i in quizzes_database.find():
             quizes.append(i['quiz_id'])
 
+        # quiz message send random
         for j in range(6):
             quiz_id = random.choice(quizes)
             quizes.remove(quiz_id)
@@ -31,6 +35,7 @@ async def send_text(call: CallbackQuery, state: FSMContext):
             if i == None:
                 await call.message.answer(text['over_text'])
                 break
+
             if i['photo_id'] != None:
                 await call.message.answer_photo(i['photo_id'])
 
@@ -49,6 +54,6 @@ async def send_text(call: CallbackQuery, state: FSMContext):
 
 @dp.poll_answer_handler()
 async def test_poll_answer(poll: types.PollAnswer):
-    print(poll)
+
     for admin in ADMINS:
         await bot.send_message(admin, str(poll))
