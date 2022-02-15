@@ -9,7 +9,7 @@ from loader import dp
 from states.States import Form
 
 
-@dp.message_handler(commands=["add_quiz"])
+@dp.message_handler(commands=["add_quiz"], state="*")
 async def cmd_start(msg: types.Message):
     await Form.addPoll.set()
     await msg.answer(text['inline_text'], reply_markup=Subject)
@@ -37,6 +37,5 @@ async def choose_level(call: CallbackQuery, state: FSMContext):
         split_data = call.data.split(':')
         data[split_data[0]] = split_data[-1]
         await call.message.answer(text=text['create_quiz_hello'], reply_markup=poll_keyboard)
-        print(data)
     # await state.finish()
 

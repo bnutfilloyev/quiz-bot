@@ -1,5 +1,5 @@
 text = {
-    "start_text": "Hello, <b>{}!</b>☺️",
+    "start_text": "مرحبا, <b>{}</b>☺️",
     'create_quiz_hello': "Click the button below and create a quiz!"
                          "Attention: in the future it will be public (non-anonymous).",
     'check_quiz': "Sorry, I won't take only quizzes!",
@@ -13,7 +13,7 @@ text = {
 }
 
 button_text = {
-    "solve_test_text": "👨‍💻 Solve Test",
+    "solve_test_text": "👨‍💻  اختيار اختبار",
     'create_quiz': "Create a quiz",
     'cancel_button': "Cancel",
 }

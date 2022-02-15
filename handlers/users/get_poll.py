@@ -6,6 +6,7 @@ from loader import dp
 from states.States import Form
 from utils.db_api.mongo import quizzes_database
 
+
 @dp.message_handler(content_types=types.ContentType.PHOTO, state=Form.addPoll)
 async def get_image(msg: types.Message, state: FSMContext):
     async with state.proxy() as data:
@@ -32,7 +33,8 @@ async def save_poll(message: types.Message, state: FSMContext):
         })
 
         await message.reply(text['count_quiz'].format(quizzes_database.count_documents({})))
-        await state.finish()
+        await Form.addPoll.set()
+        # await state.finish()
 
 
 @dp.message_handler(content_types=types.ContentTypes.POLL, state=Form.addPoll)
@@ -54,3 +56,4 @@ async def msg_with_poll(message: types.Message, state: FSMContext):
         })
 
         await message.reply(text['count_quiz'].format(quizzes_database.count_documents({})))
+        # await state.finish()
