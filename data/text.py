@@ -5,8 +5,16 @@ text = {
     'check_quiz': "Sorry, I won't take only quizzes!",
     'count_quiz': "The quiz is saved. General number of saved quizzes: {}",
     'get_quiz_stoped': "The action has been cancelled. Type /add_quiz to start over.",
-    'invite_link': "لمزيد من الامتحانات ، يمكن زيارة موقعنا على الرابط التالي:\n"
-                   "👉https://darsradar.com/\n",
+    'invite_link': "Thank you for using DARSRADAR QUIZBOT 📊📊\n"
+                   "📝📝📚📚Your results:\n"
+                   "- {}\n- {}\n- {}\n"
+                   "___________ \n"
+                   "{} Correct ✅ \n"
+                   "{} Wrong ❌ \n"
+                   "{}% Correct answers \n"
+                   "____________ \n"
+                   "👉🏃‍♂️For more quizzes and learning materials go to our website: https://darsradar.com/\n",
+
     'inline_text': "<b>اختر مما يلي</b>",
     'over_text': 'انتهت الاسئلة ، والنتيجة كالتالي:',
 

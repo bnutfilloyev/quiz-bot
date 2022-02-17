@@ -10,6 +10,7 @@ storage = MemoryStorage()
 database = client['Quizzer']
 user_db = database['users']
 quizzes_database = database['quizes_database']
+polls_database = database['polls_database']
 
 if __name__ == "__main__":
     pass
