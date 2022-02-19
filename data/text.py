@@ -1,23 +1,27 @@
 text = {
     "start_text": "مرحبا, <b>{}</b>☺️",
+
     'create_quiz_hello': "Click the button below and create a quiz!"
                          "Attention: in the future it will be public (non-anonymous).",
+
     'check_quiz': "Sorry, I won't take only quizzes!",
+
     'count_quiz': "The quiz is saved. General number of saved quizzes: {}",
+
     'get_quiz_stoped': "The action has been cancelled. Type /add_quiz to start over.",
-    'invite_link': "Thank you for using DARSRADAR QUIZBOT 📊📊\n"
-                   "📝📝📚📚Your results:\n"
+
+    'invite_link': "شكراً على استخدامكم بوت الاختبارات من درس-رادار DARSRADAR 📊📊\n"
+                   "📝📝📚📚نتيجة الاختبار: \n"
                    "- {}\n- {}\n- {}\n"
                    "___________ \n"
-                   "{} Correct ✅ \n"
-                   "{} Wrong ❌ \n"
-                   "{}% Correct answers \n"
+                   "{} صحيح ✅ \n"
+                   "{} خطأ ❌ \n"
+                   "{}%  اجابة صحيحة  \n"
                    "____________ \n"
-                   "👉🏃‍♂️For more quizzes and learning materials go to our website: https://darsradar.com/\n",
+                   "👉🏃‍♂️للمزيد من الاختبارات والمواد التعليمية والدروس المباشرة توجه الى موقعنا على الرابط التالي: https://darsradar.com/ \n",
 
     'inline_text': "<b>اختر مما يلي</b>",
     'over_text': 'انتهت الاسئلة ، والنتيجة كالتالي:',
-
 }
 
 button_text = {

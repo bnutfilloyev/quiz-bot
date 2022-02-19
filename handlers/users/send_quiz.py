@@ -5,11 +5,9 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import CallbackQuery
 
-from data.config import ADMINS
-from data.text import text
+from data.text import text, curriculum_text, level_text, subject_text
 from loader import dp, bot
 from utils.db_api.mongo import quizzes_database, user_db, polls_database
-from utils.misc.formatter import get_formatted_message
 
 
 @dp.callback_query_handler(text_contains='level')
@@ -76,7 +74,7 @@ async def send_text(call: CallbackQuery, state: FSMContext):
             polls_database.delete_one({'poll_id': poll_id})
 
         await call.message.answer(text['invite_link'].format(
-            data['subject'], data['curriculum'], data['level'],
+            subject_text[data['subject']], curriculum_text[data['curriculum']], level_text[data['level']],
             correct_answer,
             total_quiz - correct_answer,
             correct_answer * 100 // total_quiz,
