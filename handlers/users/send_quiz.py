@@ -35,31 +35,37 @@ async def send_text(call: CallbackQuery, state: FSMContext):
 
         # quiz message send random
         for j in range(6):
-            quiz_id = random.choice(quizes)
-            quizes.remove(quiz_id)
-            i = quizzes_database.find_one(
-                {'quiz_id': quiz_id, 'subject': data['subject'], 'curriculum': data['curriculum'],
-                 'level': data['level']})
+            try:
+                quiz_id = random.choice(quizes)
+                quizes.remove(quiz_id)
+                i = quizzes_database.find_one(
+                    {'quiz_id': quiz_id, 'subject': data['subject'], 'curriculum': data['curriculum'],
+                     'level': data['level']})
 
-            if i == None:
-                await call.message.answer(text['over_text'])
+                if i == None:
+                    await call.message.answer(text['over_text'])
+                    break
+
+                if i['photo_id'] != None:
+                    await call.message.answer_photo(i['photo_id'])
+
+                poll = await call.message.answer_poll(
+                    question=i['question'],
+                    options=i['options'],
+                    is_anonymous=False,
+                    type='quiz',
+                    allows_multiple_answers=False,
+                    correct_option_id=i['correct_option_id'],
+                    open_period=sleep_time,
+                )
+
+                polls_database.insert_one(
+                    {'user_id': poll.chat.id, 'poll_id': poll.poll.id, 'correct_option_id': poll.poll.correct_option_id})
+                await asyncio.sleep(sleep_time)
+            except Exception as ex:
+                print(ex)
                 break
 
-            if i['photo_id'] != None:
-                await call.message.answer_photo(i['photo_id'])
-
-            poll = await call.message.answer_poll(
-                question=i['question'],
-                options=i['options'],
-                is_anonymous=False,
-                type='quiz',
-                allows_multiple_answers=False,
-                correct_option_id=i['correct_option_id'],
-                open_period=sleep_time,
-            )
-            polls_database.insert_one({'user_id': poll.chat.id, 'poll_id': poll.poll.id, 'correct_option_id': poll.poll.correct_option_id})
-            await asyncio.sleep(sleep_time)
-            # break
         correct_answer = 0
         total_quiz = 0
         for poll in polls_database.find({'user_id': call.from_user.id}):
@@ -72,6 +78,7 @@ async def send_text(call: CallbackQuery, state: FSMContext):
                     correct_answer += 1
             except:
                 pass
+
             polls_database.delete_one({'poll_id': poll_id})
 
         await call.message.answer(text['invite_link'].format(
