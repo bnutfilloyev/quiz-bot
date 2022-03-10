@@ -5,6 +5,7 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import CallbackQuery
 
+from data.config import QUIZ_TIME
 from data.text import text, curriculum_text, level_text, subject_text
 from loader import dp, bot
 from utils.db_api.mongo import quizzes_database, user_db, polls_database
@@ -20,7 +21,7 @@ async def send_text(call: CallbackQuery, state: FSMContext):
         await call.message.delete()
 
         # quiz message sleep time
-        sleep_time = 5
+        sleep_time = QUIZ_TIME
         quizes = []
         for i in quizzes_database.find({'subject': data['subject'],
                                         'curriculum': data['curriculum'],
